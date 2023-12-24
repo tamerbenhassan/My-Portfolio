@@ -54,7 +54,7 @@ p {
 
 .padding-vertical-xxlarge {
   padding-top: 160px;
-  padding-bottom: 160px;
+  padding-bottom: 100px;
 }
 
 .timeline-hero_heading-wrapper {
@@ -562,6 +562,31 @@ p {
   max-width: 160%;
 }
 
+.div-block {
+  width: 2%;
+  height: 50px;
+  text-align: center;
+  object-fit: fill;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: static;
+}
+
+.div-block-2 {
+  width: 10%;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  display: inline-block;
+}
+
+.image-2 {
+  object-fit: fill;
+}
+
 @media screen and (max-width: 991px) {
   h1 {
     font-size: 64px;
@@ -588,6 +613,10 @@ p {
 
   .image {
     max-width: 130%;
+  }
+
+  .div-block-2 {
+    width: 10%;
   }
 }
 
@@ -703,6 +732,10 @@ p {
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
+  .div-block-2 {
+    width: 10%;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -757,6 +790,10 @@ p {
 
   .image {
     max-width: 100%;
+  }
+
+  .div-block-2 {
+    width: 10%;
   }
 }
 
