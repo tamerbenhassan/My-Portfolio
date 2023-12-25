@@ -25,6 +25,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+#ignore HCL files
 *.hcl
 
 *.DS_Store
