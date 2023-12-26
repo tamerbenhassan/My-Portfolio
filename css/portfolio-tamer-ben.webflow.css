@@ -852,6 +852,11 @@ p {
     top: 18px;
   }
 
+  .text-block-2 {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+
   .heading-2 {
     line-height: 1;
   }
