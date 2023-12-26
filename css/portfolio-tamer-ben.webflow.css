@@ -1,3 +1,22 @@
+.w-layout-blockcontainer {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+@media screen and (max-width: 991px) {
+  .w-layout-blockcontainer {
+    max-width: 728px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .w-layout-blockcontainer {
+    max-width: none;
+  }
+}
+
 body {
   color: #161616;
   font-family: Relative, sans-serif;
@@ -580,11 +599,57 @@ p {
   justify-content: center;
   align-items: center;
   margin-top: 60px;
+  transition: top .2s;
   display: inline-block;
 }
 
 .image-2 {
   object-fit: fill;
+}
+
+.section {
+  max-height: 100px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.container-2 {
+  max-height: 100px;
+  max-width: none;
+  min-width: 0;
+  flex-direction: column;
+  display: flex;
+  overflow: hidden;
+}
+
+.grid {
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: row;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.div-block-3 {
+  max-height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  object-fit: fill;
+  flex-direction: row;
+  display: flex;
+}
+
+.image-3 {
+  max-height: 100px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 5px 10px;
+}
+
+.link-block {
+  transition: top .2s;
 }
 
 @media screen and (max-width: 991px) {
