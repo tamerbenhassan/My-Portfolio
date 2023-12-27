@@ -50,5 +50,6 @@ The website operates on AWS and utilizes the following services:
 
 To deploy the infrastructure, run:
 
-terraform init
+terraform init 
+
 terraform apply
