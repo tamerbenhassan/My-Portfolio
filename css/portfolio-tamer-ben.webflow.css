@@ -665,6 +665,7 @@ p {
 }
 
 .carousel-container {
+  background-color: #fff;
   display: flex;
   overflow: hidden;
 }
@@ -672,6 +673,7 @@ p {
 .logo-container {
   width: 0;
   min-width: 100%;
+  background-color: #fff;
   justify-content: space-around;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -688,6 +690,10 @@ p {
 
 .heading-4 {
   margin-top: 0;
+}
+
+.section-2 {
+  background-color: #fff;
 }
 
 @media screen and (min-width: 1440px) {
