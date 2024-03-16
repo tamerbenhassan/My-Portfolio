@@ -13,6 +13,9 @@ phases:
   post_build:
     commands:
       - echo "Build completed on `date`"
+      - echo "Invalidating CloudFront distribution..."
+      - pip install boto3 # Ensure Boto3 is installed for the script
+      - python invalidate_cloudfront.py # Execute CloudFront invalidation
 
 artifacts:
   files:
