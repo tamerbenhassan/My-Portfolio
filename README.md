@@ -4,7 +4,7 @@
 
 This repository contains the code for my personal portfolio website, which showcases my professional journey and skills in DevOps and Cloud Engineering. The frontend is crafted with Webflow and exported to GitHub. The backend infrastructure is hosted on AWS, provisioned with Terraform.
 
-![Architecture Diagram]Architecture.png)
+![Architecture Diagram](Architecture.png)
 
 
 ## Architecture
