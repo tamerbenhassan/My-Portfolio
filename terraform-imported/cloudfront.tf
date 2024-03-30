@@ -12,7 +12,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Some comment"
   default_root_object = "index.html"
 
   aliases = ["www.tamerbenhassan.com", "tamerbenhassan.com"]
@@ -90,6 +89,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = false
+    acm_certificate_arn = aws_acm_certificate.my_certificate.arn
+    ssl_support_method  = "sni-only"
   }
 }
