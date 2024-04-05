@@ -36,3 +36,18 @@ variable "cname_record_value2" {
   description = "Route 53 CNAME Record Value for my_cname_record_1"
   type        = string
 }
+
+# CodePipeline
+variable "codepipeline_role_arn" {
+  description = "CodePipeline Role ARN"
+  type        = string
+}
+
+variable "s3_artifact" {
+  description = "S3 Bucket where Artifacts are stored"
+  type        = string
+}
+variable "codestar_connection_arn" {
+  description = "CodeStar Connection ARN"
+  type        = string
+}
