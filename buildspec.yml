@@ -3,25 +3,25 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Starting build phase..."
+    - echo "Starting build phase..."
 
   build:
     commands:
-      - echo "Copying files for build..."
-      - rsync -av --exclude=terraform_files --exclude=buildspec.yml ./ artifact/
+    - echo "Copying files for build..."
+    - rsync -av --exclude=terraform_imported --exclude=buildspec.yml ./ artifact/
 
   post_build:
     commands:
-      - echo "Build completed on `date`"
-      - echo "Invalidating CloudFront distribution..."
-      - pip install boto3 # Ensure Boto3 is installed for the script
-      - python invalidate_cloudfront.py # Execute CloudFront invalidation
+    - echo "Build completed on `date`"
+    - echo "Invalidating CloudFront distribution..."
+    - pip install boto3 # Ensure Boto3 is installed for the script
+    - python invalidate_cloudfront.py # Execute CloudFront invalidation
 
 artifacts:
   files:
-    - '**/*'
+  - '**/*'
   exclude-paths:
-    - 'terraform_files/**/*'
-    - 'buildspec.yml'
+  - 'terraform_imported/**/*'
+  - 'buildspec.yml'
   base-directory: 'artifact'
   discard-paths: yes

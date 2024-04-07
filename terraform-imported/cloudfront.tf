@@ -1,3 +1,7 @@
+output "CLOUDFRONT_DISTRIBUTION_ID" {
+  value = aws_cloudfront_distribution.s3_distribution.id
+}
+
 # Local S3 Origin
 locals {
   s3_origin_id = "myS3Origin"

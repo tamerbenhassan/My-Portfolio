@@ -51,3 +51,9 @@ variable "codestar_connection_arn" {
   description = "CodeStar Connection ARN"
   type        = string
 }
+
+# CodeBuild
+variable "codebuild_role" {
+  description = "Service role for CodeBuild"
+  type        = string
+}
