@@ -57,3 +57,14 @@ variable "codebuild_role" {
   description = "Service role for CodeBuild"
   type        = string
 }
+
+# SNS
+variable "topic_arn" {
+  description = "ARN of SNS topic"
+  type        = string
+}
+
+variable "sns_subscription_endpoint" {
+  description = "SNS Subscription endpoint"
+  type        = string
+}
