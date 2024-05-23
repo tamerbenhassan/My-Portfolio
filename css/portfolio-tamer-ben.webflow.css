@@ -77,8 +77,8 @@ p {
 }
 
 .timeline-hero_heading-wrapper {
-  max-width: 640px;
   text-align: center;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -129,18 +129,18 @@ p {
 }
 
 .timeline-main_heading-wrapper {
-  max-width: 640px;
   color: #fff;
   text-align: center;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .timeline_component {
-  max-width: 1120px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1120px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -190,14 +190,14 @@ p {
 }
 
 .timeline_circle {
-  width: 15px;
-  height: 15px;
-  max-height: 15px;
-  max-width: 15px;
-  min-height: 15px;
-  min-width: 15px;
   background-color: #fff;
   border-radius: 100%;
+  width: 15px;
+  min-width: 15px;
+  max-width: 15px;
+  height: 15px;
+  min-height: 15px;
+  max-height: 15px;
   position: -webkit-sticky;
   position: sticky;
   top: 50vh;
@@ -206,18 +206,18 @@ p {
 
 .timeline_progress {
   z-index: -2;
+  background-color: #414141;
   width: 3px;
   height: 100%;
-  background-color: #414141;
   position: absolute;
 }
 
 .timeline_progress-bar {
   z-index: -1;
-  width: 3px;
-  height: 50vh;
   background-color: #fff;
   background-image: linear-gradient(#ff7448, #ff4848 51%, #6248ff);
+  width: 3px;
+  height: 50vh;
   position: fixed;
   top: 0;
   bottom: 50vh;
@@ -289,9 +289,9 @@ p {
 }
 
 .timeline_quote-image {
+  border-radius: 8px;
   width: 48px;
   height: 48px;
-  border-radius: 8px;
   margin-right: 24px;
 }
 
@@ -370,8 +370,8 @@ p {
 }
 
 .overlay-fade-top {
-  height: 80px;
   background-image: linear-gradient(#0a0a0a, rgba(10, 10, 10, 0));
+  height: 80px;
   position: absolute;
   top: 0%;
   bottom: auto;
@@ -380,8 +380,8 @@ p {
 }
 
 .overlay-fade-bottom {
-  height: 80px;
   background-image: linear-gradient(to top, #0a0a0a, rgba(10, 10, 10, 0));
+  height: 80px;
   position: absolute;
   top: auto;
   bottom: 0%;
@@ -481,8 +481,8 @@ p {
 }
 
 .footer_text-wrapper {
-  max-width: 640px;
   text-align: center;
+  max-width: 640px;
   margin-bottom: 120px;
   margin-left: auto;
   margin-right: auto;
@@ -510,10 +510,10 @@ p {
 }
 
 .hero-nav {
-  width: 90vw;
-  max-width: 1360px;
   justify-content: space-between;
   align-items: center;
+  width: 90vw;
+  max-width: 1360px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 24px;
@@ -589,22 +589,22 @@ p {
 }
 
 .div-block {
-  width: 2%;
-  height: 50px;
   text-align: center;
   object-fit: fill;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 2%;
+  height: 50px;
   display: flex;
   position: static;
 }
 
 .div-block-2 {
-  width: 10%;
-  height: 45px;
   justify-content: center;
   align-items: center;
+  width: 10%;
+  height: 45px;
   margin-top: 60px;
   transition: top .2s;
   display: inline-block;
@@ -615,16 +615,16 @@ p {
 }
 
 .section {
-  max-height: 100px;
   background-color: #fff;
+  max-height: 100px;
   overflow: hidden;
 }
 
 .container-2 {
-  max-height: 100px;
-  max-width: none;
-  min-width: 0;
   flex-direction: column;
+  min-width: 0;
+  max-width: none;
+  max-height: 100px;
   display: flex;
   overflow: hidden;
 }
@@ -640,11 +640,11 @@ p {
 }
 
 .div-block-3 {
-  max-height: 100%;
-  max-width: none;
   aspect-ratio: auto;
   object-fit: fill;
   flex-direction: row;
+  max-width: none;
+  max-height: 100%;
   display: flex;
 }
 
@@ -660,8 +660,8 @@ p {
 }
 
 .container-3 {
-  max-width: none;
   background-color: #fff;
+  max-width: none;
 }
 
 .carousel-container {
@@ -671,10 +671,10 @@ p {
 }
 
 .logo-container {
-  width: 0;
-  min-width: 100%;
   background-color: #fff;
   justify-content: space-around;
+  width: 0;
+  min-width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
@@ -792,8 +792,8 @@ p {
   }
 
   .timeline_item {
-    width: 100%;
     grid-template-columns: 64px 1fr;
+    width: 100%;
   }
 
   .timeline_left {

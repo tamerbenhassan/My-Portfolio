@@ -770,7 +770,7 @@
         _.VERSION = "1.6.0-Webflow";
         var breaker = {};
         var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
-        var push = ArrayProto.push, slice = ArrayProto.slice, concat = ArrayProto.concat, toString = ObjProto.toString, hasOwnProperty2 = ObjProto.hasOwnProperty;
+        var push = ArrayProto.push, slice = ArrayProto.slice, concat = ArrayProto.concat, toString = ObjProto.toString, hasOwnProperty = ObjProto.hasOwnProperty;
         var nativeForEach = ArrayProto.forEach, nativeMap = ArrayProto.map, nativeReduce = ArrayProto.reduce, nativeReduceRight = ArrayProto.reduceRight, nativeFilter = ArrayProto.filter, nativeEvery = ArrayProto.every, nativeSome = ArrayProto.some, nativeIndexOf = ArrayProto.indexOf, nativeLastIndexOf = ArrayProto.lastIndexOf, nativeIsArray = Array.isArray, nativeKeys = Object.keys, nativeBind = FuncProto.bind;
         var each = _.each = _.forEach = function(obj, iterator, context) {
           if (obj == null)
@@ -922,7 +922,7 @@
           return keys;
         };
         _.has = function(obj, key) {
-          return hasOwnProperty2.call(obj, key);
+          return hasOwnProperty.call(obj, key);
         };
         _.isObject = function(obj) {
           return obj === Object(obj);
@@ -1564,13 +1564,13 @@
   // node_modules/@babel/runtime/helpers/typeof.js
   var require_typeof = __commonJS({
     "node_modules/@babel/runtime/helpers/typeof.js"(exports, module) {
-      function _typeof(obj) {
+      function _typeof(o) {
         "@babel/helpers - typeof";
-        return module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
-          return typeof obj2;
-        } : function(obj2) {
-          return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-        }, module.exports.__esModule = true, module.exports["default"] = module.exports, _typeof(obj);
+        return module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+          return typeof o2;
+        } : function(o2) {
+          return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+        }, module.exports.__esModule = true, module.exports["default"] = module.exports, _typeof(o);
       }
       module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
     }
@@ -1580,45 +1580,33 @@
   var require_interopRequireWildcard = __commonJS({
     "node_modules/@babel/runtime/helpers/interopRequireWildcard.js"(exports, module) {
       var _typeof = require_typeof()["default"];
-      function _getRequireWildcardCache(nodeInterop) {
-        if (typeof WeakMap !== "function")
+      function _getRequireWildcardCache(e) {
+        if ("function" != typeof WeakMap)
           return null;
-        var cacheBabelInterop = /* @__PURE__ */ new WeakMap();
-        var cacheNodeInterop = /* @__PURE__ */ new WeakMap();
-        return (_getRequireWildcardCache = function _getRequireWildcardCache2(nodeInterop2) {
-          return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
-        })(nodeInterop);
+        var r = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
+        return (_getRequireWildcardCache = function _getRequireWildcardCache2(e2) {
+          return e2 ? t : r;
+        })(e);
       }
-      function _interopRequireWildcard(obj, nodeInterop) {
-        if (!nodeInterop && obj && obj.__esModule) {
-          return obj;
-        }
-        if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") {
+      function _interopRequireWildcard(e, r) {
+        if (!r && e && e.__esModule)
+          return e;
+        if (null === e || "object" != _typeof(e) && "function" != typeof e)
           return {
-            "default": obj
+            "default": e
           };
-        }
-        var cache = _getRequireWildcardCache(nodeInterop);
-        if (cache && cache.has(obj)) {
-          return cache.get(obj);
-        }
-        var newObj = {};
-        var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-        for (var key in obj) {
-          if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
-            var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-            if (desc && (desc.get || desc.set)) {
-              Object.defineProperty(newObj, key, desc);
-            } else {
-              newObj[key] = obj[key];
-            }
+        var t = _getRequireWildcardCache(r);
+        if (t && t.has(e))
+          return t.get(e);
+        var n = {
+          __proto__: null
+        }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
+        for (var u in e)
+          if ("default" !== u && {}.hasOwnProperty.call(e, u)) {
+            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
+            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
           }
-        }
-        newObj["default"] = obj;
-        if (cache) {
-          cache.set(obj, newObj);
-        }
-        return newObj;
+        return n["default"] = e, t && t.set(e, n), n;
       }
       module.exports = _interopRequireWildcard, module.exports.__esModule = true, module.exports["default"] = module.exports;
     }
@@ -2027,9 +2015,9 @@
     "node_modules/core-js/internals/has-own-property.js"(exports, module) {
       var uncurryThis = require_function_uncurry_this();
       var toObject = require_to_object();
-      var hasOwnProperty2 = uncurryThis({}.hasOwnProperty);
+      var hasOwnProperty = uncurryThis({}.hasOwnProperty);
       module.exports = Object.hasOwn || function hasOwn(it, key) {
-        return hasOwnProperty2(toObject(it), key);
+        return hasOwnProperty(toObject(it), key);
       };
     }
   });
@@ -2887,11 +2875,11 @@
     "node_modules/lodash/_getRawTag.js"(exports, module) {
       var Symbol2 = require_Symbol();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       var nativeObjectToString = objectProto.toString;
       var symToStringTag = Symbol2 ? Symbol2.toStringTag : void 0;
       function getRawTag(value) {
-        var isOwn = hasOwnProperty2.call(value, symToStringTag), tag = value[symToStringTag];
+        var isOwn = hasOwnProperty.call(value, symToStringTag), tag = value[symToStringTag];
         try {
           value[symToStringTag] = void 0;
           var unmasked = true;
@@ -2983,7 +2971,7 @@
       var funcProto = Function.prototype;
       var objectProto = Object.prototype;
       var funcToString = funcProto.toString;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       var objectCtorString = funcToString.call(Object);
       function isPlainObject(value) {
         if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
@@ -2993,16 +2981,16 @@
         if (proto === null) {
           return true;
         }
-        var Ctor = hasOwnProperty2.call(proto, "constructor") && proto.constructor;
+        var Ctor = hasOwnProperty.call(proto, "constructor") && proto.constructor;
         return typeof Ctor == "function" && Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString;
       }
       module.exports = isPlainObject;
     }
   });
 
-  // node_modules/symbol-observable/lib/ponyfill.js
+  // node_modules/redux/node_modules/symbol-observable/lib/ponyfill.js
   var require_ponyfill = __commonJS({
-    "node_modules/symbol-observable/lib/ponyfill.js"(exports) {
+    "node_modules/redux/node_modules/symbol-observable/lib/ponyfill.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", {
         value: true
@@ -3026,9 +3014,9 @@
     }
   });
 
-  // node_modules/symbol-observable/lib/index.js
+  // node_modules/redux/node_modules/symbol-observable/lib/index.js
   var require_lib = __commonJS({
-    "node_modules/symbol-observable/lib/index.js"(exports, module) {
+    "node_modules/redux/node_modules/symbol-observable/lib/index.js"(exports, module) {
       "use strict";
       Object.defineProperty(exports, "__esModule", {
         value: true
@@ -3435,10 +3423,10 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/trigger-events.ts
+  // packages/systems/ix2/shared-constants/trigger-events.ts
   var EventTypeConsts, EventAppliesTo, EventBasedOn, EventContinuousMouseAxes, EventLimitAffectedElements, QuickEffectIds, QuickEffectDirectionConsts;
   var init_trigger_events = __esm({
-    "packages/systems/ix2/shared/constants/trigger-events.ts"() {
+    "packages/systems/ix2/shared-constants/trigger-events.ts"() {
       "use strict";
       EventTypeConsts = {
         NAVBAR_OPEN: "NAVBAR_OPEN",
@@ -3523,10 +3511,10 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/animation-actions.ts
+  // packages/systems/ix2/shared-constants/animation-actions.ts
   var ActionTypeConsts, ActionAppliesTo;
   var init_animation_actions = __esm({
-    "packages/systems/ix2/shared/constants/animation-actions.ts"() {
+    "packages/systems/ix2/shared-constants/animation-actions.ts"() {
       "use strict";
       ActionTypeConsts = {
         TRANSFORM_MOVE: "TRANSFORM_MOVE",
@@ -3561,10 +3549,10 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/trigger-interactions.ts
+  // packages/systems/ix2/shared-constants/trigger-interactions.ts
   var InteractionTypeConsts;
   var init_trigger_interactions = __esm({
-    "packages/systems/ix2/shared/constants/trigger-interactions.ts"() {
+    "packages/systems/ix2/shared-constants/trigger-interactions.ts"() {
       "use strict";
       InteractionTypeConsts = {
         MOUSE_CLICK_INTERACTION: "MOUSE_CLICK_INTERACTION",
@@ -3585,10 +3573,10 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/reduced-motion.ts
+  // packages/systems/ix2/shared-constants/reduced-motion.ts
   var TRANSFORM_MOVE, TRANSFORM_SCALE, TRANSFORM_ROTATE, TRANSFORM_SKEW, STYLE_SIZE, STYLE_FILTER, STYLE_FONT_VARIATION, ReducedMotionTypes;
   var init_reduced_motion = __esm({
-    "packages/systems/ix2/shared/constants/reduced-motion.ts"() {
+    "packages/systems/ix2/shared-constants/reduced-motion.ts"() {
       "use strict";
       init_animation_actions();
       ({
@@ -3612,7 +3600,7 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/IX2EngineActionTypes.ts
+  // packages/systems/ix2/shared-constants/IX2EngineActionTypes.ts
   var IX2EngineActionTypes_exports = {};
   __export(IX2EngineActionTypes_exports, {
     IX2_ACTION_LIST_PLAYBACK_CHANGED: () => IX2_ACTION_LIST_PLAYBACK_CHANGED,
@@ -3638,7 +3626,7 @@
   });
   var IX2_RAW_DATA_IMPORTED, IX2_SESSION_INITIALIZED, IX2_SESSION_STARTED, IX2_SESSION_STOPPED, IX2_PREVIEW_REQUESTED, IX2_PLAYBACK_REQUESTED, IX2_STOP_REQUESTED, IX2_CLEAR_REQUESTED, IX2_EVENT_LISTENER_ADDED, IX2_EVENT_STATE_CHANGED, IX2_ANIMATION_FRAME_CHANGED, IX2_PARAMETER_CHANGED, IX2_INSTANCE_ADDED, IX2_INSTANCE_STARTED, IX2_INSTANCE_REMOVED, IX2_ELEMENT_STATE_CHANGED, IX2_ACTION_LIST_PLAYBACK_CHANGED, IX2_VIEWPORT_WIDTH_CHANGED, IX2_MEDIA_QUERIES_DEFINED, IX2_TEST_FRAME_RENDERED;
   var init_IX2EngineActionTypes = __esm({
-    "packages/systems/ix2/shared/constants/IX2EngineActionTypes.ts"() {
+    "packages/systems/ix2/shared-constants/IX2EngineActionTypes.ts"() {
       "use strict";
       IX2_RAW_DATA_IMPORTED = "IX2_RAW_DATA_IMPORTED";
       IX2_SESSION_INITIALIZED = "IX2_SESSION_INITIALIZED";
@@ -3663,7 +3651,7 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/IX2EngineConstants.ts
+  // packages/systems/ix2/shared-constants/IX2EngineConstants.ts
   var IX2EngineConstants_exports = {};
   __export(IX2EngineConstants_exports, {
     ABSTRACT_NODE: () => ABSTRACT_NODE,
@@ -3725,7 +3713,7 @@
   });
   var IX2_ID_DELIMITER, WF_PAGE, W_MOD_JS, W_MOD_IX, BOUNDARY_SELECTOR, CONFIG_X_VALUE, CONFIG_Y_VALUE, CONFIG_Z_VALUE, CONFIG_VALUE, CONFIG_X_UNIT, CONFIG_Y_UNIT, CONFIG_Z_UNIT, CONFIG_UNIT, TRANSFORM, TRANSLATE_X, TRANSLATE_Y, TRANSLATE_Z, TRANSLATE_3D, SCALE_X, SCALE_Y, SCALE_Z, SCALE_3D, ROTATE_X, ROTATE_Y, ROTATE_Z, SKEW, SKEW_X, SKEW_Y, OPACITY, FILTER, FONT_VARIATION_SETTINGS, WIDTH, HEIGHT, BACKGROUND_COLOR, BACKGROUND, BORDER_COLOR, COLOR, DISPLAY, FLEX, WILL_CHANGE, AUTO, COMMA_DELIMITER, COLON_DELIMITER, BAR_DELIMITER, CHILDREN, IMMEDIATE_CHILDREN, SIBLINGS, PARENT, PRESERVE_3D, HTML_ELEMENT, PLAIN_OBJECT, ABSTRACT_NODE, RENDER_TRANSFORM, RENDER_GENERAL, RENDER_STYLE, RENDER_PLUGIN;
   var init_IX2EngineConstants = __esm({
-    "packages/systems/ix2/shared/constants/IX2EngineConstants.ts"() {
+    "packages/systems/ix2/shared-constants/IX2EngineConstants.ts"() {
       "use strict";
       IX2_ID_DELIMITER = "|";
       WF_PAGE = "data-wf-page";
@@ -3786,9 +3774,9 @@
     }
   });
 
-  // packages/systems/ix2/shared/constants/index.ts
-  var constants_exports = {};
-  __export(constants_exports, {
+  // packages/systems/ix2/shared-constants/index.ts
+  var shared_constants_exports = {};
+  __export(shared_constants_exports, {
     ActionAppliesTo: () => ActionAppliesTo,
     ActionTypeConsts: () => ActionTypeConsts,
     EventAppliesTo: () => EventAppliesTo,
@@ -3803,8 +3791,8 @@
     QuickEffectIds: () => QuickEffectIds,
     ReducedMotionTypes: () => ReducedMotionTypes
   });
-  var init_constants = __esm({
-    "packages/systems/ix2/shared/constants/index.ts"() {
+  var init_shared_constants = __esm({
+    "packages/systems/ix2/shared-constants/index.ts"() {
       "use strict";
       init_trigger_events();
       init_animation_actions();
@@ -3812,6 +3800,8 @@
       init_reduced_motion();
       init_IX2EngineActionTypes();
       init_IX2EngineConstants();
+      init_animation_actions();
+      init_trigger_events();
     }
   });
 
@@ -3820,7 +3810,7 @@
   var init_IX2DataReducer = __esm({
     "packages/systems/ix2/engine/reducers/IX2DataReducer.ts"() {
       "use strict";
-      init_constants();
+      init_shared_constants();
       ({ IX2_RAW_DATA_IMPORTED: IX2_RAW_DATA_IMPORTED2 } = IX2EngineActionTypes_exports);
       ixData = (state = Object.freeze({}), action) => {
         switch (action.type) {
@@ -3876,7 +3866,7 @@
         }
         return keys;
       }
-      var hasOwnProperty2 = {}.hasOwnProperty;
+      var hasOwnProperty = {}.hasOwnProperty;
       function clone(obj) {
         if (Array.isArray(obj))
           return obj.slice();
@@ -4043,7 +4033,7 @@
         var omitList = Array.isArray(attrs) ? attrs : [attrs];
         var fDoSomething = false;
         for (var i = 0; i < omitList.length; i++) {
-          if (hasOwnProperty2.call(obj, omitList[i])) {
+          if (hasOwnProperty.call(obj, omitList[i])) {
             fDoSomething = true;
             break;
           }
@@ -4097,7 +4087,7 @@
   var init_IX2RequestReducer = __esm({
     "packages/systems/ix2/engine/reducers/IX2RequestReducer.ts"() {
       "use strict";
-      init_constants();
+      init_shared_constants();
       import_timm = __toESM(require_timm());
       ({
         IX2_PREVIEW_REQUESTED: IX2_PREVIEW_REQUESTED2,
@@ -4132,7 +4122,7 @@
   var init_IX2SessionReducer = __esm({
     "packages/systems/ix2/engine/reducers/IX2SessionReducer.ts"() {
       "use strict";
-      init_constants();
+      init_shared_constants();
       import_timm2 = __toESM(require_timm());
       ({
         IX2_SESSION_INITIALIZED: IX2_SESSION_INITIALIZED2,
@@ -4486,9 +4476,9 @@
       var funcProto = Function.prototype;
       var objectProto = Object.prototype;
       var funcToString = funcProto.toString;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       var reIsNative = RegExp(
-        "^" + funcToString.call(hasOwnProperty2).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
+        "^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
       );
       function baseIsNative(value) {
         if (!isObject(value) || isMasked(value)) {
@@ -4573,14 +4563,14 @@
       var nativeCreate = require_nativeCreate();
       var HASH_UNDEFINED = "__lodash_hash_undefined__";
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function hashGet(key) {
         var data = this.__data__;
         if (nativeCreate) {
           var result = data[key];
           return result === HASH_UNDEFINED ? void 0 : result;
         }
-        return hasOwnProperty2.call(data, key) ? data[key] : void 0;
+        return hasOwnProperty.call(data, key) ? data[key] : void 0;
       }
       module.exports = hashGet;
     }
@@ -4591,10 +4581,10 @@
     "node_modules/lodash/_hashHas.js"(exports, module) {
       var nativeCreate = require_nativeCreate();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function hashHas(key) {
         var data = this.__data__;
-        return nativeCreate ? data[key] !== void 0 : hasOwnProperty2.call(data, key);
+        return nativeCreate ? data[key] !== void 0 : hasOwnProperty.call(data, key);
       }
       module.exports = hashHas;
     }
@@ -5152,12 +5142,12 @@
       var baseIsArguments = require_baseIsArguments();
       var isObjectLike = require_isObjectLike();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       var propertyIsEnumerable = objectProto.propertyIsEnumerable;
       var isArguments = baseIsArguments(function() {
         return arguments;
       }()) ? baseIsArguments : function(value) {
-        return isObjectLike(value) && hasOwnProperty2.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
+        return isObjectLike(value) && hasOwnProperty.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
       };
       module.exports = isArguments;
     }
@@ -5309,11 +5299,11 @@
       var isIndex = require_isIndex();
       var isTypedArray = require_isTypedArray();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function arrayLikeKeys(value, inherited) {
         var isArr = isArray(value), isArg = !isArr && isArguments(value), isBuff = !isArr && !isArg && isBuffer(value), isType = !isArr && !isArg && !isBuff && isTypedArray(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length = result.length;
         for (var key in value) {
-          if ((inherited || hasOwnProperty2.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+          if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
           (key == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
           isBuff && (key == "offset" || key == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
           isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
@@ -5354,14 +5344,14 @@
       var isPrototype = require_isPrototype();
       var nativeKeys = require_nativeKeys();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function baseKeys(object) {
         if (!isPrototype(object)) {
           return nativeKeys(object);
         }
         var result = [];
         for (var key in Object(object)) {
-          if (hasOwnProperty2.call(object, key) && key != "constructor") {
+          if (hasOwnProperty.call(object, key) && key != "constructor") {
             result.push(key);
           }
         }
@@ -5415,7 +5405,7 @@
       var getAllKeys = require_getAllKeys();
       var COMPARE_PARTIAL_FLAG = 1;
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
         var isPartial = bitmask & COMPARE_PARTIAL_FLAG, objProps = getAllKeys(object), objLength = objProps.length, othProps = getAllKeys(other), othLength = othProps.length;
         if (objLength != othLength && !isPartial) {
@@ -5424,7 +5414,7 @@
         var index = objLength;
         while (index--) {
           var key = objProps[index];
-          if (!(isPartial ? key in other : hasOwnProperty2.call(other, key))) {
+          if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {
             return false;
           }
         }
@@ -5565,7 +5555,7 @@
       var arrayTag = "[object Array]";
       var objectTag = "[object Object]";
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
         var objIsArr = isArray(object), othIsArr = isArray(other), objTag = objIsArr ? arrayTag : getTag(object), othTag = othIsArr ? arrayTag : getTag(other);
         objTag = objTag == argsTag ? objectTag : objTag;
@@ -5583,7 +5573,7 @@
           return objIsArr || isTypedArray(object) ? equalArrays(object, other, bitmask, customizer, equalFunc, stack) : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
         }
         if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
-          var objIsWrapped = objIsObj && hasOwnProperty2.call(object, "__wrapped__"), othIsWrapped = othIsObj && hasOwnProperty2.call(other, "__wrapped__");
+          var objIsWrapped = objIsObj && hasOwnProperty.call(object, "__wrapped__"), othIsWrapped = othIsObj && hasOwnProperty.call(other, "__wrapped__");
           if (objIsWrapped || othIsWrapped) {
             var objUnwrapped = objIsWrapped ? object.value() : object, othUnwrapped = othIsWrapped ? other.value() : other;
             stack || (stack = new Stack());
@@ -6765,7 +6755,7 @@
     "packages/systems/ix2/shared/reducers/IX2ElementsReducer.ts"() {
       "use strict";
       import_timm3 = __toESM(require_timm());
-      init_constants();
+      init_shared_constants();
       ({
         HTML_ELEMENT: HTML_ELEMENT2,
         PLAIN_OBJECT: PLAIN_OBJECT2,
@@ -6953,8 +6943,8 @@
       };
       exports.getPluginDestination = getPluginDestination2;
       var createPluginInstance3 = (element, actionItem) => {
-        var _actionItem$config, _actionItem$config$ta;
-        const pluginElementId = actionItem === null || actionItem === void 0 ? void 0 : (_actionItem$config = actionItem.config) === null || _actionItem$config === void 0 ? void 0 : (_actionItem$config$ta = _actionItem$config.target) === null || _actionItem$config$ta === void 0 ? void 0 : _actionItem$config$ta.pluginElement;
+        var _actionItem$config;
+        const pluginElementId = actionItem === null || actionItem === void 0 || (_actionItem$config = actionItem.config) === null || _actionItem$config === void 0 || (_actionItem$config = _actionItem$config.target) === null || _actionItem$config === void 0 ? void 0 : _actionItem$config.pluginElement;
         return pluginElementId ? queryContainerElement(pluginElementId) : null;
       };
       exports.createPluginInstance = createPluginInstance3;
@@ -7015,22 +7005,172 @@
     }
   });
 
-  // packages/systems/ix2/plugins/IX2Variable.js
-  var require_IX2Variable = __commonJS({
-    "packages/systems/ix2/plugins/IX2Variable.js"(exports) {
+  // packages/systems/ix2/shared-utils/normalizeColor.js
+  var require_normalizeColor = __commonJS({
+    "packages/systems/ix2/shared-utils/normalizeColor.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.getPluginOrigin = exports.getPluginDuration = exports.getPluginDestination = exports.getPluginConfig = exports.createPluginInstance = exports.clearPlugin = void 0;
-      exports.normalizeColor = normalizeColor;
-      exports.renderPlugin = void 0;
-      function normalizeColor(inputColor) {
+      exports.normalizeColor = normalizeColor2;
+      var colorNamesObj = {
+        aliceblue: "#F0F8FF",
+        antiquewhite: "#FAEBD7",
+        aqua: "#00FFFF",
+        aquamarine: "#7FFFD4",
+        azure: "#F0FFFF",
+        beige: "#F5F5DC",
+        bisque: "#FFE4C4",
+        black: "#000000",
+        blanchedalmond: "#FFEBCD",
+        blue: "#0000FF",
+        blueviolet: "#8A2BE2",
+        brown: "#A52A2A",
+        burlywood: "#DEB887",
+        cadetblue: "#5F9EA0",
+        chartreuse: "#7FFF00",
+        chocolate: "#D2691E",
+        coral: "#FF7F50",
+        cornflowerblue: "#6495ED",
+        cornsilk: "#FFF8DC",
+        crimson: "#DC143C",
+        cyan: "#00FFFF",
+        darkblue: "#00008B",
+        darkcyan: "#008B8B",
+        darkgoldenrod: "#B8860B",
+        darkgray: "#A9A9A9",
+        darkgreen: "#006400",
+        darkgrey: "#A9A9A9",
+        darkkhaki: "#BDB76B",
+        darkmagenta: "#8B008B",
+        darkolivegreen: "#556B2F",
+        darkorange: "#FF8C00",
+        darkorchid: "#9932CC",
+        darkred: "#8B0000",
+        darksalmon: "#E9967A",
+        darkseagreen: "#8FBC8F",
+        darkslateblue: "#483D8B",
+        darkslategray: "#2F4F4F",
+        darkslategrey: "#2F4F4F",
+        darkturquoise: "#00CED1",
+        darkviolet: "#9400D3",
+        deeppink: "#FF1493",
+        deepskyblue: "#00BFFF",
+        dimgray: "#696969",
+        dimgrey: "#696969",
+        dodgerblue: "#1E90FF",
+        firebrick: "#B22222",
+        floralwhite: "#FFFAF0",
+        forestgreen: "#228B22",
+        fuchsia: "#FF00FF",
+        gainsboro: "#DCDCDC",
+        ghostwhite: "#F8F8FF",
+        gold: "#FFD700",
+        goldenrod: "#DAA520",
+        gray: "#808080",
+        green: "#008000",
+        greenyellow: "#ADFF2F",
+        grey: "#808080",
+        honeydew: "#F0FFF0",
+        hotpink: "#FF69B4",
+        indianred: "#CD5C5C",
+        indigo: "#4B0082",
+        ivory: "#FFFFF0",
+        khaki: "#F0E68C",
+        lavender: "#E6E6FA",
+        lavenderblush: "#FFF0F5",
+        lawngreen: "#7CFC00",
+        lemonchiffon: "#FFFACD",
+        lightblue: "#ADD8E6",
+        lightcoral: "#F08080",
+        lightcyan: "#E0FFFF",
+        lightgoldenrodyellow: "#FAFAD2",
+        lightgray: "#D3D3D3",
+        lightgreen: "#90EE90",
+        lightgrey: "#D3D3D3",
+        lightpink: "#FFB6C1",
+        lightsalmon: "#FFA07A",
+        lightseagreen: "#20B2AA",
+        lightskyblue: "#87CEFA",
+        lightslategray: "#778899",
+        lightslategrey: "#778899",
+        lightsteelblue: "#B0C4DE",
+        lightyellow: "#FFFFE0",
+        lime: "#00FF00",
+        limegreen: "#32CD32",
+        linen: "#FAF0E6",
+        magenta: "#FF00FF",
+        maroon: "#800000",
+        mediumaquamarine: "#66CDAA",
+        mediumblue: "#0000CD",
+        mediumorchid: "#BA55D3",
+        mediumpurple: "#9370DB",
+        mediumseagreen: "#3CB371",
+        mediumslateblue: "#7B68EE",
+        mediumspringgreen: "#00FA9A",
+        mediumturquoise: "#48D1CC",
+        mediumvioletred: "#C71585",
+        midnightblue: "#191970",
+        mintcream: "#F5FFFA",
+        mistyrose: "#FFE4E1",
+        moccasin: "#FFE4B5",
+        navajowhite: "#FFDEAD",
+        navy: "#000080",
+        oldlace: "#FDF5E6",
+        olive: "#808000",
+        olivedrab: "#6B8E23",
+        orange: "#FFA500",
+        orangered: "#FF4500",
+        orchid: "#DA70D6",
+        palegoldenrod: "#EEE8AA",
+        palegreen: "#98FB98",
+        paleturquoise: "#AFEEEE",
+        palevioletred: "#DB7093",
+        papayawhip: "#FFEFD5",
+        peachpuff: "#FFDAB9",
+        peru: "#CD853F",
+        pink: "#FFC0CB",
+        plum: "#DDA0DD",
+        powderblue: "#B0E0E6",
+        purple: "#800080",
+        rebeccapurple: "#663399",
+        red: "#FF0000",
+        rosybrown: "#BC8F8F",
+        royalblue: "#4169E1",
+        saddlebrown: "#8B4513",
+        salmon: "#FA8072",
+        sandybrown: "#F4A460",
+        seagreen: "#2E8B57",
+        seashell: "#FFF5EE",
+        sienna: "#A0522D",
+        silver: "#C0C0C0",
+        skyblue: "#87CEEB",
+        slateblue: "#6A5ACD",
+        slategray: "#708090",
+        slategrey: "#708090",
+        snow: "#FFFAFA",
+        springgreen: "#00FF7F",
+        steelblue: "#4682B4",
+        tan: "#D2B48C",
+        teal: "#008080",
+        thistle: "#D8BFD8",
+        tomato: "#FF6347",
+        turquoise: "#40E0D0",
+        violet: "#EE82EE",
+        wheat: "#F5DEB3",
+        white: "#FFFFFF",
+        whitesmoke: "#F5F5F5",
+        yellow: "#FFFF00",
+        yellowgreen: "#9ACD32"
+      };
+      function normalizeColor2(inputColor) {
         let red;
         let green;
         let blue;
         let alpha = 1;
-        const cleanColor = inputColor.replace(/\s/g, "").toLowerCase();
+        const rawColor = inputColor.replace(/\s/g, "").toLowerCase();
+        const namedColor = typeof colorNamesObj[rawColor] === "string" ? colorNamesObj[rawColor].toLowerCase() : null;
+        const cleanColor = namedColor || rawColor;
         if (cleanColor.startsWith("#")) {
           const hex = cleanColor.substring(1);
           if (hex.length === 3) {
@@ -7134,7 +7274,7 @@
           blue = Math.round((B + m) * 255);
         }
         if (Number.isNaN(red) || Number.isNaN(green) || Number.isNaN(blue)) {
-          `Invalid color in [ix2/lugins/IX2Variable.js] '${inputColor}'`;
+          throw new Error(`Invalid color in [ix2/shared/utils/normalizeColor.js] '${inputColor}'`);
         }
         return {
           red,
@@ -7143,6 +7283,18 @@
           alpha
         };
       }
+    }
+  });
+
+  // packages/systems/ix2/plugins/IX2Variable.js
+  var require_IX2Variable = __commonJS({
+    "packages/systems/ix2/plugins/IX2Variable.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.renderPlugin = exports.getPluginOrigin = exports.getPluginDuration = exports.getPluginDestination = exports.getPluginConfig = exports.createPluginInstance = exports.clearPlugin = void 0;
+      var _normalizeColor = require_normalizeColor();
       var getPluginConfig2 = (actionItemConfig, key) => {
         return actionItemConfig.value[key];
       };
@@ -7164,7 +7316,7 @@
           };
         }
         if (destination.red != null && destination.green != null && destination.blue != null) {
-          return normalizeColor(computedValue);
+          return (0, _normalizeColor.normalizeColor)(computedValue);
         }
       };
       exports.getPluginOrigin = getPluginOrigin2;
@@ -7218,15 +7370,15 @@
         value: true
       });
       exports.pluginMethodMap = void 0;
-      var _constants = (init_constants(), __toCommonJS(constants_exports));
+      var _sharedConstants = (init_shared_constants(), __toCommonJS(shared_constants_exports));
       var lottie = _interopRequireWildcard(require_IX2Lottie());
       var spline = _interopRequireWildcard(require_IX2Spline());
       var variable = _interopRequireWildcard(require_IX2Variable());
-      var pluginMethodMap2 = exports.pluginMethodMap = /* @__PURE__ */ new Map([[_constants.ActionTypeConsts.PLUGIN_LOTTIE, {
+      var pluginMethodMap2 = exports.pluginMethodMap = /* @__PURE__ */ new Map([[_sharedConstants.ActionTypeConsts.PLUGIN_LOTTIE, {
         ...lottie
-      }], [_constants.ActionTypeConsts.PLUGIN_SPLINE, {
+      }], [_sharedConstants.ActionTypeConsts.PLUGIN_SPLINE, {
         ...spline
-      }], [_constants.ActionTypeConsts.PLUGIN_VARIABLE, {
+      }], [_sharedConstants.ActionTypeConsts.PLUGIN_VARIABLE, {
         ...variable
       }]]);
     }
@@ -7462,17 +7614,21 @@
       return false;
     }
     for (let i = 0; i < keysA.length; i++) {
-      if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      if (!Object.hasOwn(
+        objB,
+        // @ts-expect-error - TS2345 - Argument of type 'string | undefined' is not assignable to parameter of type 'PropertyKey'.
+        keysA[i]
+      ) || // @ts-expect-error - TS2538 - Type 'undefined' cannot be used as an index type. | TS2538 - Type 'undefined' cannot be used as an index type.
+      !is(objA[keysA[i]], objB[keysA[i]])) {
         return false;
       }
     }
     return true;
   }
-  var hasOwnProperty, shallowEqual_default;
+  var shallowEqual_default;
   var init_shallowEqual = __esm({
     "packages/systems/ix2/shared/logic/shallowEqual.ts"() {
       "use strict";
-      hasOwnProperty = Object.prototype.hasOwnProperty;
       shallowEqual_default = shallowEqual;
     }
   });
@@ -7849,7 +8005,18 @@
       case STYLE_BACKGROUND_COLOR:
       case STYLE_BORDER:
       case STYLE_TEXT_COLOR: {
-        const { rValue, gValue, bValue, aValue } = actionItem.config;
+        const { rValue, gValue, bValue, aValue, globalSwatchId } = actionItem.config;
+        if (globalSwatchId && globalSwatchId.startsWith("--")) {
+          const { getStyle: getStyle2 } = elementApi;
+          const value = getStyle2(element, globalSwatchId);
+          const normalizedValue = (0, import_normalizeColor.normalizeColor)(value);
+          return {
+            rValue: normalizedValue.red,
+            gValue: normalizedValue.green,
+            bValue: normalizedValue.blue,
+            aValue: normalizedValue.alpha
+          };
+        }
         return { rValue, gValue, bValue, aValue };
       }
       case STYLE_FILTER2: {
@@ -7988,9 +8155,13 @@
     const value = rgbValidRegex.test(inlineValue) ? inlineValue : computedStyle[prop];
     const matches = getFirstMatch(rgbMatchRegex, value).split(COMMA_DELIMITER2);
     return {
+      // @ts-expect-error - TS2345 - Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
       rValue: (0, import_defaultTo.default)(parseInt(matches[0], 10), 255),
+      // @ts-expect-error - TS2345 - Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
       gValue: (0, import_defaultTo.default)(parseInt(matches[1], 10), 255),
+      // @ts-expect-error - TS2345 - Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
       bValue: (0, import_defaultTo.default)(parseInt(matches[2], 10), 255),
+      // @ts-expect-error - TS2345 - Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
       aValue: (0, import_defaultTo.default)(parseFloat(matches[3]), 1)
     };
   }
@@ -8273,7 +8444,7 @@
     const { id = "", selector = "", useEventTarget = "" } = target;
     return id + BAR_DELIMITER2 + selector + BAR_DELIMITER2 + useEventTarget;
   }
-  var import_defaultTo, import_reduce, import_findLast, import_timm4, BACKGROUND2, TRANSFORM2, TRANSLATE_3D2, SCALE_3D2, ROTATE_X2, ROTATE_Y2, ROTATE_Z2, SKEW2, PRESERVE_3D2, FLEX2, OPACITY2, FILTER2, FONT_VARIATION_SETTINGS2, WIDTH2, HEIGHT2, BACKGROUND_COLOR2, BORDER_COLOR2, COLOR2, CHILDREN2, IMMEDIATE_CHILDREN2, SIBLINGS2, PARENT2, DISPLAY2, WILL_CHANGE2, AUTO2, COMMA_DELIMITER2, COLON_DELIMITER2, BAR_DELIMITER2, RENDER_TRANSFORM2, RENDER_GENERAL2, RENDER_STYLE2, RENDER_PLUGIN2, TRANSFORM_MOVE2, TRANSFORM_SCALE2, TRANSFORM_ROTATE2, TRANSFORM_SKEW2, STYLE_OPACITY, STYLE_FILTER2, STYLE_FONT_VARIATION2, STYLE_SIZE2, STYLE_BACKGROUND_COLOR, STYLE_BORDER, STYLE_TEXT_COLOR, GENERAL_DISPLAY, OBJECT_VALUE, trim, colorStyleProps, willChangeProps, objectCache, instanceCount, elementCount, strictEqual, pxValueRegex, getFilterDefaults, getFontVariationDefaults, reduceFilters, reduceFontVariations, getItemConfigByKey, transformDefaults, filterDefaults, fontVariationDefaults, getFilterUnit, transformKeys, paramCapture, rgbValidRegex, rgbMatchRegex, processElementByType;
+  var import_defaultTo, import_reduce, import_findLast, import_timm4, import_normalizeColor, BACKGROUND2, TRANSFORM2, TRANSLATE_3D2, SCALE_3D2, ROTATE_X2, ROTATE_Y2, ROTATE_Z2, SKEW2, PRESERVE_3D2, FLEX2, OPACITY2, FILTER2, FONT_VARIATION_SETTINGS2, WIDTH2, HEIGHT2, BACKGROUND_COLOR2, BORDER_COLOR2, COLOR2, CHILDREN2, IMMEDIATE_CHILDREN2, SIBLINGS2, PARENT2, DISPLAY2, WILL_CHANGE2, AUTO2, COMMA_DELIMITER2, COLON_DELIMITER2, BAR_DELIMITER2, RENDER_TRANSFORM2, RENDER_GENERAL2, RENDER_STYLE2, RENDER_PLUGIN2, TRANSFORM_MOVE2, TRANSFORM_SCALE2, TRANSFORM_ROTATE2, TRANSFORM_SKEW2, STYLE_OPACITY, STYLE_FILTER2, STYLE_FONT_VARIATION2, STYLE_SIZE2, STYLE_BACKGROUND_COLOR, STYLE_BORDER, STYLE_TEXT_COLOR, GENERAL_DISPLAY, OBJECT_VALUE, trim, colorStyleProps, willChangeProps, objectCache, instanceCount, elementCount, strictEqual, pxValueRegex, getFilterDefaults, getFontVariationDefaults, reduceFilters, reduceFontVariations, getItemConfigByKey, transformDefaults, filterDefaults, fontVariationDefaults, getFilterUnit, transformKeys, paramCapture, rgbValidRegex, rgbMatchRegex, processElementByType;
   var init_IX2VanillaUtils = __esm({
     "packages/systems/ix2/shared/logic/IX2VanillaUtils.ts"() {
       "use strict";
@@ -8281,9 +8452,10 @@
       import_reduce = __toESM(require_reduce());
       import_findLast = __toESM(require_findLast());
       import_timm4 = __toESM(require_timm());
-      init_constants();
+      init_shared_constants();
       init_shallowEqual();
       init_IX2EasingUtils();
+      import_normalizeColor = __toESM(require_normalizeColor());
       init_IX2VanillaPlugins();
       init_IX2BrowserSupport();
       ({
@@ -8533,7 +8705,7 @@
   var init_IX2InstancesReducer = __esm({
     "packages/systems/ix2/engine/reducers/IX2InstancesReducer.ts"() {
       "use strict";
-      init_constants();
+      init_shared_constants();
       import_shared = __toESM(require_shared2());
       import_timm5 = __toESM(require_timm());
       ({
@@ -8827,7 +8999,7 @@
   var init_IX2ParametersReducer = __esm({
     "packages/systems/ix2/engine/reducers/IX2ParametersReducer.ts"() {
       "use strict";
-      init_constants();
+      init_shared_constants();
       ({ IX2_RAW_DATA_IMPORTED: IX2_RAW_DATA_IMPORTED4, IX2_SESSION_STOPPED: IX2_SESSION_STOPPED5, IX2_PARAMETER_CHANGED: IX2_PARAMETER_CHANGED2 } = IX2EngineActionTypes_exports);
       ixParameters = (state = {
         /*mutable flat state*/
@@ -9069,10 +9241,10 @@
       var baseAssignValue = require_baseAssignValue();
       var eq = require_eq();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function assignValue(object, key, value) {
         var objValue = object[key];
-        if (!(hasOwnProperty2.call(object, key) && eq(objValue, value)) || value === void 0 && !(key in object)) {
+        if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) || value === void 0 && !(key in object)) {
           baseAssignValue(object, key, value);
         }
       }
@@ -9178,14 +9350,14 @@
       var isPrototype = require_isPrototype();
       var nativeKeysIn = require_nativeKeysIn();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function baseKeysIn(object) {
         if (!isObject(object)) {
           return nativeKeysIn(object);
         }
         var isProto = isPrototype(object), result = [];
         for (var key in object) {
-          if (!(key == "constructor" && (isProto || !hasOwnProperty2.call(object, key)))) {
+          if (!(key == "constructor" && (isProto || !hasOwnProperty.call(object, key)))) {
             result.push(key);
           }
         }
@@ -9271,7 +9443,7 @@
       var mapTag = "[object Map]";
       var setTag = "[object Set]";
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function isEmpty2(value) {
         if (value == null) {
           return true;
@@ -9287,7 +9459,7 @@
           return !baseKeys(value).length;
         }
         for (var key in value) {
-          if (hasOwnProperty2.call(value, key)) {
+          if (hasOwnProperty.call(value, key)) {
             return false;
           }
         }
@@ -9515,7 +9687,7 @@
   var init_IX2EngineActions = __esm({
     "packages/systems/ix2/engine/actions/IX2EngineActions.ts"() {
       "use strict";
-      init_constants();
+      init_shared_constants();
       import_shared3 = __toESM(require_shared2());
       ({
         IX2_RAW_DATA_IMPORTED: IX2_RAW_DATA_IMPORTED5,
@@ -9714,6 +9886,9 @@
     element.style[prop] = value;
   }
   function getStyle(element, prop) {
+    if (prop.startsWith("--")) {
+      return window.getComputedStyle(document.documentElement).getPropertyValue(prop);
+    }
     return element.style[prop];
   }
   function getProperty(element, prop) {
@@ -9806,7 +9981,7 @@
     "packages/systems/ix2/engine/logic/IX2BrowserApi.ts"() {
       "use strict";
       import_shared4 = __toESM(require_shared2());
-      init_constants();
+      init_shared_constants();
       ({ ELEMENT_MATCHES: ELEMENT_MATCHES2 } = import_shared4.IX2BrowserSupport);
       ({ IX2_ID_DELIMITER: IX2_ID_DELIMITER2, HTML_ELEMENT: HTML_ELEMENT3, PLAIN_OBJECT: PLAIN_OBJECT3, WF_PAGE: WF_PAGE2 } = IX2EngineConstants_exports);
       getClosestElement = Element.prototype.closest ? (element, selector) => {
@@ -10101,9 +10276,9 @@
     "node_modules/lodash/_getFuncName.js"(exports, module) {
       var realNames = require_realNames();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function getFuncName(func) {
-        var result = func.name + "", array = realNames[result], length = hasOwnProperty2.call(realNames, result) ? array.length : 0;
+        var result = func.name + "", array = realNames[result], length = hasOwnProperty.call(realNames, result) ? array.length : 0;
         while (length--) {
           var data = array[length], otherFunc = data.func;
           if (otherFunc == null || otherFunc == func) {
@@ -10182,13 +10357,13 @@
       var isObjectLike = require_isObjectLike();
       var wrapperClone = require_wrapperClone();
       var objectProto = Object.prototype;
-      var hasOwnProperty2 = objectProto.hasOwnProperty;
+      var hasOwnProperty = objectProto.hasOwnProperty;
       function lodash(value) {
         if (isObjectLike(value) && !isArray(value) && !(value instanceof LazyWrapper)) {
           if (value instanceof LodashWrapper) {
             return value;
           }
-          if (hasOwnProperty2.call(value, "__wrapped__")) {
+          if (hasOwnProperty.call(value, "__wrapped__")) {
             return wrapperClone(value);
           }
         }
@@ -10337,7 +10512,7 @@
       import_flow = __toESM(require_flow());
       import_get = __toESM(require_get());
       import_clamp = __toESM(require_clamp());
-      init_constants();
+      init_shared_constants();
       init_IX2VanillaEngine();
       init_IX2EngineActions();
       import_shared5 = __toESM(require_shared2());
@@ -11722,7 +11897,7 @@
       import_mapValues = __toESM(require_mapValues());
       import_forEach = __toESM(require_forEach());
       import_throttle = __toESM(require_throttle());
-      init_constants();
+      init_shared_constants();
       import_shared6 = __toESM(require_shared2());
       init_IX2EngineActions();
       init_IX2BrowserApi();
@@ -11864,7 +12039,7 @@
           }
         }
         function select(link) {
-          if (link.dataset && link.dataset.wfCurrentLocale) {
+          if (link.getAttribute("hreflang")) {
             return;
           }
           var href = designer && link.getAttribute("href-disabled") || link.getAttribute("href");
@@ -11895,7 +12070,7 @@
           var viewTop = $win.scrollTop();
           var viewHeight = $win.height();
           _.each(anchors, function(anchor) {
-            if (anchor.link[0] && anchor.link[0].dataset && anchor.link[0].dataset.wfCurrentLocale) {
+            if (anchor.link.attr("hreflang")) {
               return;
             }
             var $link = anchor.link;
@@ -12223,20 +12398,6 @@
  */
 /*!
  * Webflow._ (aka) Underscore.js 1.6.0 (custom build)
- * _.each
- * _.map
- * _.find
- * _.filter
- * _.any
- * _.contains
- * _.delay
- * _.defer
- * _.throttle (webflow)
- * _.debounce
- * _.keys
- * _.has
- * _.now
- * _.template (webflow: upgraded to 1.13.6)
  *
  * http://underscorejs.org
  * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
