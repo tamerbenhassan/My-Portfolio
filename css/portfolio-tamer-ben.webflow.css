@@ -1,3 +1,8 @@
+:root {
+  --white: white;
+  --black: black;
+}
+
 .w-layout-blockcontainer {
   max-width: 940px;
   margin-left: auto;
@@ -399,6 +404,11 @@ p {
   margin-left: 0;
   margin-right: 2.5px;
   position: relative;
+}
+
+.button-icon.medium {
+  width: 27px;
+  height: 27px;
 }
 
 .button-icon-small {
