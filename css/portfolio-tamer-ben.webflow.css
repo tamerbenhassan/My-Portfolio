@@ -121,6 +121,7 @@ p {
 
 .paragraph-large {
   letter-spacing: -.02em;
+  margin-bottom: 40px;
   font-size: 18px;
 }
 
@@ -851,6 +852,10 @@ p {
 }
 
 @media screen and (min-width: 1440px) {
+  .paragraph-large {
+    margin-bottom: 40px;
+  }
+
   .container-3 {
     background-color: #fff;
   }
