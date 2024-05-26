@@ -773,11 +773,20 @@ p {
     width: 120px;
     height: 120px;
   }
+
+  .waves-master-logos-2 {
+    grid-row-gap: 20px;
+  }
 }
 
 @media screen and (min-width: 1920px) {
   .image-4.logo {
     height: 170px;
+  }
+
+  .waves-master-logos-2 {
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
   }
 }
 
