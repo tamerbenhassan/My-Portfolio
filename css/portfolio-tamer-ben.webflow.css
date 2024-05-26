@@ -707,13 +707,13 @@ p {
 }
 
 .waves-image-logo-2 {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
 }
 
 .waves-master-logos-2 {
-  grid-column-gap: 20px;
-  grid-row-gap: 30px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
