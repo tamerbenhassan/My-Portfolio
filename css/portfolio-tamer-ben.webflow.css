@@ -1,6 +1,7 @@
 :root {
   --white: white;
   --black: black;
+  --walsh--black: #2c2c2c;
 }
 
 .w-layout-blockcontainer {
@@ -799,6 +800,56 @@ p {
   padding-bottom: 100px;
 }
 
+.waves-image-logo-3 {
+  width: 100px;
+  height: 100px;
+}
+
+.waves-master-logos-3 {
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 950px;
+  margin-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 60px;
+  display: flex;
+}
+
+.waves---paragraph-big-2 {
+  font-size: 20px;
+  line-height: 130%;
+}
+
+.waves---heading-2-no-margins-2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 48px;
+  line-height: 130%;
+}
+
+.waves---center-heading-2 {
+  grid-row-gap: 16px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.waves---main-container-3 {
+  max-width: 1352px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.waves---section-medium-3 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 @media screen and (min-width: 1440px) {
   .container-3 {
     background-color: #fff;
@@ -896,6 +947,10 @@ p {
   .waves-master-logos-1 {
     grid-row-gap: 40px;
     flex-direction: column;
+  }
+
+  .waves-master-logos-3 {
+    grid-column-gap: 40px;
   }
 }
 
@@ -1049,6 +1104,21 @@ p {
     padding-top: 80px;
     padding-bottom: 80px;
   }
+
+  .waves---heading-2-no-margins-2 {
+    font-size: 44px;
+    line-height: 125%;
+  }
+
+  .waves---main-container-3 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .waves---section-medium-3 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -1150,10 +1220,15 @@ p {
     padding-top: 64px;
     padding-bottom: 64px;
   }
-}
 
-#w-node-_37aefc94-4940-7ba7-e159-21010df41a0e-b9adda82, #w-node-_37aefc94-4940-7ba7-e159-21010df41a0f-b9adda82, #w-node-_37aefc94-4940-7ba7-e159-21010df41a10-b9adda82, #w-node-_37aefc94-4940-7ba7-e159-21010df41a11-b9adda82 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
+  .waves---heading-2-no-margins-2 {
+    font-size: 34px;
+  }
+
+  .waves---section-medium-3 {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 }
 
 @media screen and (max-width: 767px) {
