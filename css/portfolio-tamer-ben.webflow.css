@@ -805,8 +805,8 @@ p {
 }
 
 .waves-master-logos-3 {
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
@@ -840,10 +840,9 @@ p {
 
 .waves---main-container-3 {
   max-width: 1352px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  padding-left: 24px;
-  padding-right: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 60px 24px;
 }
 
 .waves---section-medium-3 {
