@@ -843,7 +843,7 @@ p {
   max-width: 1352px;
   margin-top: 0;
   margin-bottom: 0;
-  padding: 60px 24px;
+  padding: 20px 24px 60px;
 }
 
 .waves---section-medium-3 {
@@ -961,6 +961,10 @@ p {
 
   .waves-master-logos-3 {
     grid-column-gap: 40px;
+  }
+
+  .waves---main-container-3 {
+    padding-top: 10px;
   }
 }
 
@@ -1126,7 +1130,7 @@ p {
   }
 
   .waves---section-medium-3 {
-    padding-top: 80px;
+    padding-top: 10px;
     padding-bottom: 80px;
   }
 }
@@ -1236,7 +1240,7 @@ p {
   }
 
   .waves---section-medium-3 {
-    padding-top: 64px;
+    padding-top: 20px;
     padding-bottom: 64px;
   }
 }
